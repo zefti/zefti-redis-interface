@@ -1,3 +1,5 @@
+//TODO: change this to a constructor
+
 function init(db, options){
   if (!options || !options.dataType){
     throw new Error('zefti-redis-interface error, no dataType provided.')
