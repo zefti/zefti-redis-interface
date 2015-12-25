@@ -326,4 +326,25 @@ redis.set.prototype.getNewId = function(options){
 
 
 
+
+redis.pubsub = function(db){
+  this.db = db;
+  return this;
+};
+
+redis.pubsub.prototype.create = function(hash, options, cb){
+  this.db.publish('alive', hash, function(err, response){
+    console.log('publish err::');
+    console.log(err);
+    console.log('publish response::');
+    console.log(response);
+  });
+};
+
+redis.pubsub.prototype.find = function(hash, fieldMask, options, cb){
+
+};
+
+
+
 module.exports = init;
