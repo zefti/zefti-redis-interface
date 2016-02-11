@@ -1,0 +1,104 @@
+{
+  "errorCodes": {
+    "56b7295fffbc693838624fb9": {
+      "eMsg": "Internal Error",
+      "description": "Redis returned error",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fbc": {
+      "eMsg": "Internal Error",
+      "description": "Redis did not return result",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fb7": {
+      "eMsg": "Missing _id",
+      "description": "An id or an _id must be provided to create a redis hash",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fb8": {
+      "eMsg": "Already exists",
+      "description": "The id already exists for this create.",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fba": {
+      "eMsg": "Internal Redis error",
+      "description": "Failed redis hmset",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fbb": {
+      "eMsg": "Missing _id",
+      "description": "An id or an _id must be provided to create a redis hash",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fbd": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fbe": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fbf": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc0": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc1": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc2": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc3": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc4": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc5": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc6": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc7": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc8": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fc9": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    },
+    "56b7295fffbc693838624fca": {
+      "eMsg": "tbd",
+      "description": "",
+      "sev": 2
+    }
+  }
+}
