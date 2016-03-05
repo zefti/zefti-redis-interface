@@ -63,12 +63,15 @@ redis.hash.prototype.findById = redis.hash.prototype.find = function(){
 
   var redisCallback = function(err, result){
     var resultObj = {};
-    if (result instanceof Array) {
+    var resultType = utils.type(result);
+    if (resultType === 'array') {
       fieldMaskArr.forEach(function(field, index){
         if (result[index]) resultObj[field] = result[index];
       })
-    } else {
+    } else if (resultType === 'object') {
       resultObj = result;
+    } else {
+      //do nothing, it isnt an array or object
     }
     resultObj._id = intArgs[0];
     cb (err, resultObj);
@@ -367,12 +370,7 @@ redis.pubsub = function(db){
 };
 
 redis.pubsub.prototype.create = function(hash, options, cb){
-  this.db.publish('alive', hash, function(err, response){
-    console.log('publish err::');
-    console.log(err);
-    console.log('publish response::');
-    console.log(response);
-  });
+
 };
 
 redis.pubsub.prototype.find = function(hash, fieldMask, options, cb){
