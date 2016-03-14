@@ -1,20 +1,17 @@
 var assert = require('assert');
-var logger = null;
-var config = null;
-var redis = require('zefti-redis');
 var utils = require('zefti-utils');
 var zeftiRedisInterface = require('zefti-redis-interface');
+var zeftiTest = require('zefti-test');
+var dependencies = zeftiTest.dependencies;
+
+/* databases */
+var redisHash = zeftiRedisInterface(dependencies.dataSources.hatchSession, {dataType:'hash'});
+
+/* models */
 
 
-var redisDataSource = {
-  "dataSource" : {
-    "host" : "192.168.59.103",
-    "port" : "10000"
-  }
-};
+/* controllers */
 
-var redisDb = redis(redisDataSource);
-var redisHash = zeftiRedisInterface(redisDb, {dataType:'hash'});
 
 describe('REDIS - HASH', function() {
   var item1Id = '1234';

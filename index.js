@@ -1,3 +1,4 @@
+var msgpack = require('msgpack-js');
 var utils = require('zefti-utils');
 var resolve5Arguments = utils.resolve5Arguments;
 var resolve4Arguments = utils.resolve4Arguments;
@@ -62,18 +63,19 @@ redis.hash.prototype.findById = redis.hash.prototype.find = function(){
   var cb = intArgs.splice(3, 1)[0];
 
   var redisCallback = function(err, result){
-    var resultObj = {};
+    var resultObj = null;
     var resultType = utils.type(result);
     if (resultType === 'array') {
+      resultObj = {_id : intArgs[0]};
       fieldMaskArr.forEach(function(field, index){
         if (result[index]) resultObj[field] = result[index];
       })
     } else if (resultType === 'object') {
       resultObj = result;
+      resultObj._id = intArgs[0];
     } else {
       //do nothing, it isnt an array or object
     }
-    resultObj._id = intArgs[0];
     cb (err, resultObj);
   };
 
@@ -369,12 +371,44 @@ redis.pubsub = function(db){
   return this;
 };
 
-redis.pubsub.prototype.create = function(hash, options, cb){
-
+redis.pubsub.prototype.subscribe = function(){
+  var intArgs = resolve3Arguments(arguments);
+  var channel = intArgs[0];
+  var options = intArgs[1];
+  var cb = intArgs[2];
+  var pattern = options.pattern;
+  this.db.subscribe(channel, function(err, result){
+    cb(err, result);
+  });
 };
 
-redis.pubsub.prototype.find = function(hash, fieldMask, options, cb){
+redis.pubsub.prototype.unsubscribe = function(){
+  var intArgs = resolve3Arguments(arguments);
+  var channel = intArgs[0];
+  var options = intArgs[1];
+  var cb = intArgs[2];
+  var pattern = options.pattern;
+  this.db.unsubscribe(channel, function(err, result){
+    cb(err, result);
+  });
+};
 
+redis.pubsub.prototype.publish = function(){
+  var finalContent = null;
+  var intArgs = resolve4Arguments(arguments);
+  var channel = intArgs[0];
+  var content = intArgs[1]
+  var options = intArgs[2];
+  var cb = intArgs[3];
+  var encode = options.encode;
+  if (encode){
+    finalContent = msgpack.encode(content);
+  } else {
+    finalContent = content;
+  }
+  this.db.publish(channel, finalContent, function(err, result){
+    cb(err, result);
+  });
 };
 
 
