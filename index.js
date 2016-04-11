@@ -35,6 +35,7 @@ redis.hash.prototype.create = function(){
   var hash = intArgs[0];
   var cb = intArgs[2];
   var self = this;
+
   if (!hash._id) return cb({errCode:'56b7295fffbc693838624fb7'});
   var id = hash._id;
   delete hash._id;
